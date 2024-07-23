@@ -1,5 +1,5 @@
 "use client"
-import CheckouForm from '@/components/Home/CheckouForm';
+import CheckouForm from '../../components/Home/CheckouForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useSearchParams } from 'next/navigation'
