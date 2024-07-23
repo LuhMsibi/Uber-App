@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-    // basePath: '/Uber-Clone', 
-    output: "export",
-};
+const nextConfig = {};
 
 export default nextConfig;
 

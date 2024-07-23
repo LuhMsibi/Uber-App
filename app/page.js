@@ -1,8 +1,8 @@
 'use client'
-import GoogleMapSection from "@/components/Home/GoogleMapSection";
-import SearchSection from "@/components/Home/SearchSection";
-import { DestinationContext } from "@/context/DestinationContext";
-import { SourceContext } from "@/context/SourceContext";
+import GoogleMapSection from "../components/Home/GoogleMapSection"
+import SearchSection from "../components/Home/SearchSection";
+import { DestinationContext } from "../context/DestinationContext";
+import { SourceContext } from "../context/SourceContext";
 import { UserButton } from "@clerk/nextjs";
 import { LoadScript } from "@react-google-maps/api";
 import Image from "next/image";
@@ -21,6 +21,7 @@ export default function Home() {
             </div>
             <div className="col-span-2">
               <GoogleMapSection/>
+              
             </div>
         </div>
         </LoadScript>
