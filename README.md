@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Uber Clone — Next.js Ride‑hailing Demo
 
-## Getting Started
+> A simple Uber‑style demo built with Next.js, Google Maps, Stripe and Clerk.
 
-First, run the development server:
+<img width="1904" height="907" alt="image" src="https://github.com/user-attachments/assets/e2335ef9-cbb5-4d8f-973c-a647a094505f" />
+
+
+---
+
+## Features
+
+- Search pickup and drop‑off addresses using Google Places autocomplete
+- Interactive Google Map with markers and routing (Directions API)
+- Select from multiple car types; fare estimated by distance
+- Secure payment flow using Stripe Payment Intents
+- Authentication with Clerk (sign in / sign up)
+- Clean component structure and Context API for shared state
+
+## Tech stack
+
+- Next.js (App Router)
+- React + Tailwind CSS
+- Google Maps & Places (`@react-google-maps/api`)
+- Stripe (`@stripe/react-stripe-js`, server route for PaymentIntent)
+- Clerk for authentication
+- React Icons, React Toastify
+
+## Quick start
+
+Clone and install:
+
+```bash
+git clone https://github.com/<your-username>/uber-clone.git
+cd uber-clone
+npm install
+```
+
+Create an environment file by copying the example and filling your keys:
+
+```bash
+cp .env.local.example .env.local
+# then open .env.local and add your API keys
+```
+
+Run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Required environment variables
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Add the following to `.env.local` (or set in your deployment platform):
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```env
+NEXT_PUBLIC_GOOGLE_API_KEY=your-google-maps-key
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+```
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## How it works — important files
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/page.js` — main landing page; provides `SourceContext` and `DestinationContext`
+- `components/Home/SearchSection.js` — inputs and distance calculation
+- `components/Home/GoogleMapSection.js` — map, markers, and directions
+- `components/Home/CarListOptions.js` & `CarListItem.js` — car options and pricing
+- `components/Home/CheckouForm.js` — Stripe Elements form
+- `app/api/create-intent/route.tsx` — server route that creates Stripe PaymentIntents
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Screenshots & demo
 
-## Deploy on Vercel
+<img width="1919" height="929" alt="image" src="https://github.com/user-attachments/assets/598c0dde-2987-45fe-b5dd-f3c0040fda05" />
+<img width="1907" height="901" alt="image" src="https://github.com/user-attachments/assets/4078aa84-9ff3-4d3c-b20a-5cb8cb44da41" />
+<img width="1919" height="920" alt="image" src="https://github.com/user-attachments/assets/c8864c0e-8956-41b5-a07e-7b394641a08b" />
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+
+This repo is a personal demo — pull requests and issues are welcome. For serious contributions, open an issue first.
+
+---
+
